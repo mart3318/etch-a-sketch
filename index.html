@@ -4,10 +4,43 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Etch-A-Sketch</title>
+        <style>
+            table {
+                border: solid 5px
+            }
+            </style>
     </head>
-    <body>
+    <body onload="createHeartTable(); createStarTable()">
 <div>
     
 </div>
+<script>
+    function createHeartTable() {
+        let table = document.createElement("table")
+        table.setAttribute("id", "heartTable")
+        for (let i = 0; i < 16; i++) {
+            let row = table.insertRow(i)
+            for (let j = 0; j < 16; j++) {
+                let cell = row.insertCell(j)
+                cell.innerHTML = "🖤"
+            }
+        }
+        document.body.appendChild(table)
+    }
+
+    function createStarTable() {
+        let table = document.createElement("table")
+        table.setAttribute("id", "starTable")
+        for (let i = 0; i < 16; i++) {
+            let row = table.insertRow(i)
+            for (let j = 0; j < 16; j++) {
+                let cell = row.insertCell(j)
+                cell.innerHTML = "★"    
+            }
+        }
+        document.body.appendChild(table)
+
+    }
+</script>
     </body>
 </html>
