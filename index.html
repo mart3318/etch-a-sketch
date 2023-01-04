@@ -1,55 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Etch-A-Sketch</title>
-        <style src="style.css">
-           
-            </style>
-    </head>
-    <body onload="createHeartTable(); createStarTable()">
-<div>
-    
-</div>
-<script>
-    
-  
-
-  
-
-    function createHeartTable() {
-        let table = document.createElement("table")
-        table.setAttribute("id", "heartTable")
-        for (let i = 0; i < 16; i++) {
-            let row = table.insertRow(i)
-            for (let j = 0; j < 16; j++) {
-                let cell = row.insertCell(j)
-                cell.innerHTML = "E🖤"
-                cell.addEventListener("mouseover", function() {
-        cell.style.backgroundColor = "red";
-      });
-            }
-        }
-        document.body.appendChild(table)
-    }
-
-    function createStarTable() {
-        let table = document.createElement("table")
-        table.setAttribute("id", "starTable")
-        for (let i = 0; i < 16; i++) {
-            let row = table.insertRow(i)
-            for (let j = 0; j < 16; j++) {
-                let cell = row.insertCell(j)
-                cell.innerHTML = "★"    
-            }
-        }
-        document.body.appendChild(table)
-
-    }
-
-   
-
-</script>
-    </body>
-</html>
+        <html>
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Etch-A-Sketch</title>
+                <style>
+                    table {
+                        border : 1px solid
+                    }
+                    table.center {
+                        margin-left:auto; 
+                        margin-right:auto
+                    }
+                </style>
+            </head>
+            <body onload="createSketchArea()">
+                <script>
+                    function createSketchArea() {
+                        let table = document.createElement("table")
+                        table.setAttribute("id", "sketchArea")
+                        table.style.margin = "0 auto"
+                        for (let i = 0; i < 16; i++) {
+                            let row = table.insertRow(i)
+                            for (let j = 0; j < 16; j++) {
+                                let cell = row.insertCell(j)
+                                cell.innerHTML = "&nbsp"
+                                cell.style.width = "50px"
+                                cell.style.height = "50px"
+                                cell.addEventListener("mouseover", 
+                                    function() {
+                                        cell.style.backgroundColor = "red"
+                                    }
+                                )
+                            }
+                        }
+                        document.body.appendChild(table)
+                    }
+                </script>
+            </body>
+        </html>
