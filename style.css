@@ -1,0 +1,9 @@
+body {
+    color : aqua
+}
+table {
+    border: solid 5px
+    }
+div:hover {
+    color: blue
+}

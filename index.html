@@ -4,10 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Etch-A-Sketch</title>
-        <style>
-            table {
-                border: solid 5px
-            }
+        <style src="style.css">
+           
             </style>
     </head>
     <body onload="createHeartTable(); createStarTable()">
@@ -15,6 +13,11 @@
     
 </div>
 <script>
+    
+  
+
+  
+
     function createHeartTable() {
         let table = document.createElement("table")
         table.setAttribute("id", "heartTable")
@@ -22,7 +25,10 @@
             let row = table.insertRow(i)
             for (let j = 0; j < 16; j++) {
                 let cell = row.insertCell(j)
-                cell.innerHTML = "🖤"
+                cell.innerHTML = "E🖤"
+                cell.addEventListener("mouseover", function() {
+        cell.style.backgroundColor = "red";
+      });
             }
         }
         document.body.appendChild(table)
@@ -41,6 +47,9 @@
         document.body.appendChild(table)
 
     }
+
+   
+
 </script>
     </body>
 </html>
