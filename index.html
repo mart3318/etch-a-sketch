@@ -5,23 +5,113 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>Etch-A-Sketch</title>
                 <style>
-                    table {
+                     table {
                         border : 1px solid
                     }
                     table.center {
                         margin-left:auto; 
                         margin-right:auto
                     }
+                    div {
+                        margin: 50px
+                    }
+                    #currentColorSample {
+                        width : 50px;
+                        height : 50px;
+                        margin-left:auto;
+                        margin-right:auto
+                    }
+                    #currentColorValue {
+                        font-size: 50px;
+                        text-align: center
+                    }
+                    #debug {
+                        width: 50px;
+                        height: 50px
+                    }
                 </style>
             </head>
             <body onload="createSketchArea()">
+                <div>
+                <button id="debug" onclick="debug()">🔎🪲</button>
+                </div>
+                <div>
                 Red
-                <input type="range" id="red"></input>
+                <input type="range" id="red" min="0" max="255" value="0"></input>
                 Green
-                <input type="range" id="green"></input>
+                <input type="range" id="green" min="0" max="255" value="0"></input>
                 Blue
-                <input type="range" id="blue"></input>
+                <input type="range" id="blue" min="0" max="255" value="0"></input>
+                </div>
+                <div>
+                    <table id="currentColorSample">
+                        <tr>
+                            <td>
+                                            
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="currentColorValue">
+
+                </div>
                 <script>
+                    let redDecimalValue = parseInt(document.getElementById("red").value, 10)
+                    let greenDecimalValue = parseInt(document.getElementById("green").value, 10)
+                    let blueDecimalValue = parseInt(document.getElementById("blue").value, 10)
+                    let redHexadecimalValue = "00"
+                    let greenHexadecimalValue = "00"
+                    let blueHexadecimalValue = "00"
+                    let currentColor = "#000000"
+                    let currentColorValue = "#000000"
+
+                    //initialize 
+                    //parseInt(document.getElementById("red").value, 10)
+                    //parseInt(document.getElementById("green").value, 10)
+                    //parseInt(document.getElementById("blue").value, 10)
+                    convertRedToHexadecimal()
+                    convertGreenToHexadecimal()
+                    convertBlueToHexdecimal()
+                    document.getElementById("currentColorValue").innerHTML = currentColor
+
+
+                    function debug() {
+                        console.log("👇 Debug Start 👇")
+                        console.log("redDecimalValue: "+redDecimalValue)
+                        console.log("greenDecimalValue: "+greenDecimalValue)
+                        console.log("blueDecimalValue: "+blueDecimalValue)
+                        console.log("redHexadecimalValue: "+redHexadecimalValue)
+                        console.log("greenHexadecimalValue: "+greenHexadecimalValue)
+                        console.log("blueHexaDecimalValue: "+blueHexadecimalValue)
+                        console.log("currentColor: "+currentColor)
+                    }
+                    function convertRedToHexadecimal() {
+                            redHexadecimalValue = parseInt(document.getElementById("red").value, 10)
+                            redHexadecimalValue = redHexadecimalValue.toString(16)
+                            redHexadecimalValue = redHexadecimalValue.padStart(2, '0')
+                            currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
+                            document.getElementById("currentColorSample").style.backgroundColor = currentColor
+                            document.getElementById("currentColorValue").innerHTML = currentColor
+                        }
+                    function convertGreenToHexadecimal() {
+                            greenHexadecimalValue = parseInt(document.getElementById("green").value, 10)
+                            greenHexadecimalValue = greenHexadecimalValue.toString(16)
+                            greenHexadecimalValue = greenHexadecimalValue.padStart(2, '0')
+                            currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
+                            document.getElementById("currentColorSample").style.backgroundColor = currentColor
+                            document.getElementById("currentColorValue").innerHTML = currentColor
+                        }
+                    function convertBlueToHexdecimal () {
+                            blueHexadecimalValue = parseInt(document.getElementById("blue").value, 10)
+                            blueHexadecimalValue = blueHexadecimalValue.toString(16)
+                            blueHexadecimalValue = blueHexadecimalValue.padStart(2, '0')
+                            currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
+                            document.getElementById("currentColorSample").style.backgroundColor = currentColor
+                            document.getElementById("currentColorValue").innerHTML = currentColor
+                        }
+                    red.addEventListener("input", convertRedToHexadecimal)
+                    green.addEventListener("input", convertGreenToHexadecimal)
+                    blue.addEventListener("input", convertBlueToHexdecimal)
                     function createSketchArea() {
                         let table = document.createElement("table")
                         table.setAttribute("id", "sketchArea")
@@ -35,7 +125,7 @@
                                 cell.style.height = "50px"
                                 cell.addEventListener("mouseover", 
                                     function() {
-                                        cell.style.backgroundColor = "red"
+                                        cell.style.backgroundColor = currentColor
                                     }
                                 )
                             }
