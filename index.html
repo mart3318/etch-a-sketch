@@ -42,8 +42,13 @@
             </head>
             <body onload="createSketchArea()">
                 <div>
+                    <h1><center>ADAM MARTINEZ</center></h1>
+                </div>
+                <div>
                 <button id="debug" onclick="debug()">🔎🪲</button>
                 </div>
+<div>
+
                 <div>
                 Red
                 <input type="range" id="red" min="0" max="255" value="0"></input>
@@ -51,6 +56,9 @@
                 <input type="range" id="green" min="0" max="255" value="0"></input>
                 Blue
                 <input type="range" id="blue" min="0" max="255" value="0"></input>
+                </div>
+                <div id="currentColorValue">
+
                 </div>
                 <div>
                     <table id="currentColorSample">
@@ -61,12 +69,15 @@
                         </tr>
                     </table>
                 </div>
-                <div id="currentColorValue">
-
-                </div>
+               
                 <div id="debugDisplay">
 
                 </div>
+                <div>
+
+                </div>
+
+</div>
                 <script>
                     let redDecimalValue = parseInt(document.getElementById("red").value, 10)
                     let greenDecimalValue = parseInt(document.getElementById("green").value, 10)
@@ -135,18 +146,18 @@
                                 cell.style.border = "0px"
                                 cell.style.padding = "0px"
                                 cell.style.margin = "0px"
-                                cell.addEventListener("mousedown",
+                                cell.addEventListener("pointerdown",
                                     function() {
                                         mouseIsClicked = true
                                         cell.style.backgroundColor = currentColor
                                     }
                                 )
-                                cell.addEventListener("mouseup",
+                                cell.addEventListener("pointerup",
                                     function() {
                                         mouseIsClicked = false
                                     }
                                 )
-                                cell.addEventListener("mouseover", 
+                                cell.addEventListener("pointerover", 
                                     function() {
                                         if (mouseIsClicked) {
                                             cell.style.backgroundColor = currentColor
