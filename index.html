@@ -148,18 +148,21 @@
                                 cell.style.margin = "0px"
                                 cell.addEventListener("pointerdown",
                                     function() {
+                                        event.preventDefault()
                                         mouseIsClicked = true
                                         cell.style.backgroundColor = currentColor
                                     }
                                 )
                                 cell.addEventListener("pointerup",
                                     function() {
+                                        event.preventDefault()
                                         mouseIsClicked = false
                                     }
                                 )
                                 cell.addEventListener("pointerover", 
                                     function() {
                                         if (mouseIsClicked) {
+                                            event.preventDefault()
                                             cell.style.backgroundColor = currentColor
                                         }
                                     }
