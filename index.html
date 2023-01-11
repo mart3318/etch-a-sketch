@@ -168,6 +168,12 @@
                                     }
 
                                 )
+                                cell.addEventListener("touchmove",
+                                    function() {
+                                        event.preventDefault()
+                                        cell.style.backgroundColor = currentColor
+                                    }
+                                )
                                 //cell.addEventListener("click",
                                     //function() {
                                         //cell.style.backgroundColor = currentColor
