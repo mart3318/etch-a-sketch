@@ -60,7 +60,7 @@
             
             January 11th, 2023
             <br>
-            Version 2
+            Version 4
             <br>
             🎯 Fix issue where touchmove event is prevented by some unkown browser process    
             <br>
@@ -189,41 +189,45 @@
                             cell.style.border = "0px"
                             cell.style.padding = "0px"
                             cell.style.margin = "0px"
-                            //cell.addEventListener("pointerdown",
-                              //  function() {
+                            cell.addEventListener("pointerdown",
+                                function(e) {
                                     
-                                //    event.preventDefault()
-                                  //  mouseIsClicked = true
-                                    //cell.style.backgroundColor = currentColor
-                               // }
-                            //)
-                            //cell.addEventListener("pointerup",
-                              //  function() {
+                                    event.preventDefault()
+                                    mouseIsClicked = true
+                                    cell.style.backgroundColor = currentColor
+                                    document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY + " e.type: " + e.type;
+                                }
+                            )
+                            cell.addEventListener("pointerup",
+                                function(e) {
                                     
-                                //    event.preventDefault()
-                                  //  mouseIsClicked = false
-                                //}
-                            //)
-                            //cell.addEventListener("pointerover", 
-                              //  function() {
-                                //    if (mouseIsClicked) {
-                                  //      handleMouseMove()
-                                    //    event.preventDefault()
-                                      //  cell.style.backgroundColor = currentColor
-                                    //}
-                                //}
-                            //)
+                                    event.preventDefault()
+                                    mouseIsClicked = false
+                                    document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY + " e.type: " + e.type;
+                                }
+                            )
+                            cell.addEventListener("pointerover", 
+                                function(e) {
+                                    if (mouseIsClicked) {
+                            
+                                        event.preventDefault()
+                                        cell.style.backgroundColor = currentColor
+                                        document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY + " e.type: " + e.type;
+                                    }
+                                }
+                            )
                             //cell.addEventListener("click",
-                                //function() {
+                               // function() {
                                     //cell.style.backgroundColor = currentColor
-                               // }
+                                //}
                             //)
                             cell.addEventListener("touchmove",
-                                function() {
+                                function(e) {
                                     
                                     event.preventDefault()
                                     
                                     cell.style.backgroundColor = currentColor
+                                    document.getElementById("debugDisplay").innerHTML = "X: " + e.touches[0].clientX + "Y: " + e.touches[0].clientY + " e.type: " + e.type;
                                 }
                             )
 
