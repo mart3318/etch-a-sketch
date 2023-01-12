@@ -60,7 +60,7 @@
             
             January 11th, 2023
             <br>
-            Version 15
+            Version 16
 
             <br>
             🎯 Fix issue where touchmove event is prevented by some unkown browser process    
@@ -233,8 +233,8 @@
                                     event.preventDefault()
                                     
                                  
-                                    let target = event.touches[0].target
-                                    target.style.backgroundColor = currentColor
+                                    //let target = event.touches[0].target
+                                    //target.style.backgroundColor = currentColor
                                     
                                     let target = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
                                         if(target.tagName === "TD"){
