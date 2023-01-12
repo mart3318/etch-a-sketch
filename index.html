@@ -60,7 +60,7 @@
             
             January 11th, 2023
             <br>
-            Version 11
+            Version 12
             <br>
             🎯 Fix issue where touchmove event is prevented by some unkown browser process    
             <br>
@@ -228,15 +228,16 @@
                             //)
                             cell.addEventListener("touchmove",
                                 function(e) {
-                                   if (mouseIsClicked) { 
+                                    
                                     event.preventDefault()
                                     
-                                 
+                                 let touchTracker = e.touches
+
                                     cell.style.backgroundColor = currentColor
                                     
                                    document.getElementById("debugDisplay").innerHTML = "X: " + e.touches[0].clientX + "Y: " + e.touches[0].clientY
-                                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type + "e.touches.identifier" + e.touches.identifier 
-                                   }
+                                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type + "touchTracker" + touchTracker 
+                                   
 
                                 }
 
