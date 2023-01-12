@@ -1,189 +1,229 @@
 <!DOCTYPE html>
-        <html>
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <title>Etch-A-Sketch</title>
-                <style>
-                     table {
-                        border : 0px solid
-                    }
-                    table.center {
-                        margin-left:auto; 
-                        margin-right:auto
-                    }
-                    div {
-                        margin: 50px
-                    }
-                    #currentColorSample {
-                        width : 50px;
-                        height : 50px;
-                        margin-left:auto;
-                        margin-right:auto
-                    }
-                    #currentColorValue {
-                        font-size: 50px;
-                        text-align: center
-                    }
-                    #debug {
-                        width: 50px;
-                        height: 50px
-                    }
-                    .not-selectable {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
-  }
-                </style>
-            </head>
-            <body onload="createSketchArea()">
-                <div>
-                    <h1><center>ADAM MARTINEZ</center></h1>
-                </div>
-                <div>
-                <button id="debug" onclick="debug()">🔎🪲</button>
-                </div>
-<div>
 
-                <div>
-                Red
-                <input type="range" id="red" min="0" max="255" value="0"></input>
-                Green
-                <input type="range" id="green" min="0" max="255" value="0"></input>
-                Blue
-                <input type="range" id="blue" min="0" max="255" value="0"></input>
-                </div>
-                <div id="currentColorValue">
+<html>
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Etch-A-Sketch</title>
+        
+        <style>
+            
+            table {
+                border : 0px solid
+            }
+            
+            table.center {
+                margin-left:auto; 
+                margin-right:auto
+            }
+            
+            div {
+                margin: 50px;
+            }
+            
+            #currentColorSample {
+                width : 50px;
+                height : 50px;
+                margin-left:auto;
+                margin-right:auto
+            }
+            
+            #currentColorValue {
+                font-size: 50px;
+                text-align: center
+            }
+            
+            #debug {
+                width: 50px;
+                height: 50px
+            }
+            
+            .not-selectable {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none
+            }
+        
+        </style>
+    
+    </head>
+    
+    <body onload="createSketchArea()">
+        
+        <div>
+            
+            January 11th, 2023
+            <br>
+            Version 1
+            <br>
+            🎯 Fix issue where touchmove event is prevented by some unkown browser process    
+            <br>
+            <button id="debug" onclick="debug()">🔎🪲</button>
 
-                </div>
-                <div>
-                    <table id="currentColorSample">
-                        <tr>
-                            <td>
-                                            
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-               
-                <div id="debugDisplay">
-
-                </div>
-                <div>
-
-                </div>
-
-</div>
-                <script>
-                    let redDecimalValue = parseInt(document.getElementById("red").value, 10)
-                    let greenDecimalValue = parseInt(document.getElementById("green").value, 10)
-                    let blueDecimalValue = parseInt(document.getElementById("blue").value, 10)
-                    let redHexadecimalValue = "00"
-                    let greenHexadecimalValue = "00"
-                    let blueHexadecimalValue = "00"
-                    let currentColor = "#000000"
-                    let currentColorValue = "🎨#000000"
-                    let mouseIsClicked = false
-                    convertRedToHexadecimal()
-                    convertGreenToHexadecimal()
-                    convertBlueToHexdecimal()
-                    document.getElementById("currentColorValue").innerHTML = currentColorValue
-                    function debug() {
-                        console.log("👇 Debug Start 👇")
-                        console.log("redDecimalValue: "+redDecimalValue)
-                        console.log("greenDecimalValue: "+greenDecimalValue)
-                        console.log("blueDecimalValue: "+blueDecimalValue)
-                        console.log("redHexadecimalValue: "+redHexadecimalValue)
-                        console.log("greenHexadecimalValue: "+greenHexadecimalValue)
-                        console.log("blueHexaDecimalValue: "+blueHexadecimalValue)
-                        console.log("currentColor: "+currentColor)
-                    }
-                    function convertRedToHexadecimal() {
-                            redHexadecimalValue = parseInt(document.getElementById("red").value, 10)
-                            redHexadecimalValue = redHexadecimalValue.toString(16)
-                            redHexadecimalValue = redHexadecimalValue.padStart(2, '0')
-                            currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
-                            document.getElementById("currentColorSample").style.backgroundColor = currentColor
-                            document.getElementById("currentColorValue").innerHTML = "🎨"+currentColor
-                        }
-                    function convertGreenToHexadecimal() {
-                            greenHexadecimalValue = parseInt(document.getElementById("green").value, 10)
-                            greenHexadecimalValue = greenHexadecimalValue.toString(16)
-                            greenHexadecimalValue = greenHexadecimalValue.padStart(2, '0')
-                            currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
-                            document.getElementById("currentColorSample").style.backgroundColor = currentColor
-                            document.getElementById("currentColorValue").innerHTML = "🎨"+currentColor
-                        }
-                    function convertBlueToHexdecimal () {
-                            blueHexadecimalValue = parseInt(document.getElementById("blue").value, 10)
-                            blueHexadecimalValue = blueHexadecimalValue.toString(16)
-                            blueHexadecimalValue = blueHexadecimalValue.padStart(2, '0')
-                            currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
-                            document.getElementById("currentColorSample").style.backgroundColor = currentColor
-                            document.getElementById("currentColorValue").innerHTML = "🎨"+currentColor
-                        }
-                    red.addEventListener("input", convertRedToHexadecimal)
-                    green.addEventListener("input", convertGreenToHexadecimal)
-                    blue.addEventListener("input", convertBlueToHexdecimal)
-                    function createSketchArea() {
-                        let table = document.createElement("table")
-                        table.setAttribute("id", "sketchArea")
-                        table.style.margin = "0 auto"
-                        table.style.border = "1px solid black"
-                        table.setAttribute("cellspacing", 0)
-                        for (let i = 0; i < 16; i++) {
-                            let row = table.insertRow(i)
-                            for (let j = 0; j < 16; j++) {
-                                let cell = row.insertCell(j)
-                                cell.innerHTML = "&nbsp"
-                                cell.className = "not-selectable"
-                                cell.style.width = "50px"
-                                cell.style.height = "50px"
-                                cell.style.border = "0px"
-                                cell.style.padding = "0px"
-                                cell.style.margin = "0px"
-                                cell.addEventListener("pointerdown",
-                                    function() {
+        </div>
+        
+        <div>
+            
+            Red
+            <input type="range" id="red" min="0" max="255" value="0"></input>
+            Green
+            <input type="range" id="green" min="0" max="255" value="0"></input>
+            Blue
+            <input type="range" id="blue" min="0" max="255" value="0"></input>
+        
+        </div>
+        
+        <div id="currentColorValue">
+        
+        </div>
+        
+        <div>
+            
+            <table id="currentColorSample">
+                
+                <tr>
+                    
+                    <td>
+                    
+                    </td>
+                
+                </tr>
+            
+            </table>
+        
+        </div>
+        
+        <div id="debugDisplay">
+        
+        </div>
+            
+            <script>
+                
+                let redDecimalValue = parseInt(document.getElementById("red").value, 10)
+                let greenDecimalValue = parseInt(document.getElementById("green").value, 10)
+                let blueDecimalValue = parseInt(document.getElementById("blue").value, 10)
+                
+                let redHexadecimalValue = "00"
+                let greenHexadecimalValue = "00"
+                let blueHexadecimalValue = "00"
+                
+                let currentColor = "#000000"
+                let currentColorValue = "🎨#000000"
+                
+                let mouseIsClicked = false
+                
+                convertRedToHexadecimal()
+                convertGreenToHexadecimal()
+                convertBlueToHexdecimal()
+                
+                document.getElementById("currentColorValue").innerHTML = currentColorValue
+                
+                function debug() {
+                    console.log("👇 Debug Start 👇")
+                    console.log("redDecimalValue: "+redDecimalValue)
+                    console.log("greenDecimalValue: "+greenDecimalValue)
+                    console.log("blueDecimalValue: "+blueDecimalValue)
+                    console.log("redHexadecimalValue: "+redHexadecimalValue)
+                    console.log("greenHexadecimalValue: "+greenHexadecimalValue)
+                    console.log("blueHexaDecimalValue: "+blueHexadecimalValue)
+                    console.log("currentColor: "+currentColor)
+                    console.log("currentColorValue: "+currentColorValue)
+                    console.log("mouseIsClicked: "+mouseIsClicked)
+                }
+                
+                function convertRedToHexadecimal() {
+                    redHexadecimalValue = parseInt(document.getElementById("red").value, 10)
+                    redHexadecimalValue = redHexadecimalValue.toString(16)
+                    redHexadecimalValue = redHexadecimalValue.padStart(2, '0')
+                    currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
+                    document.getElementById("currentColorSample").style.backgroundColor = currentColor
+                    document.getElementById("currentColorValue").innerHTML = "🎨"+currentColor
+                }
+                
+                function convertGreenToHexadecimal() {
+                    greenHexadecimalValue = parseInt(document.getElementById("green").value, 10)
+                    greenHexadecimalValue = greenHexadecimalValue.toString(16)
+                    greenHexadecimalValue = greenHexadecimalValue.padStart(2, '0')
+                    currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
+                    document.getElementById("currentColorSample").style.backgroundColor = currentColor
+                    document.getElementById("currentColorValue").innerHTML = "🎨"+currentColor
+                }
+                
+                function convertBlueToHexdecimal () {
+                    blueHexadecimalValue = parseInt(document.getElementById("blue").value, 10)
+                    blueHexadecimalValue = blueHexadecimalValue.toString(16)
+                    blueHexadecimalValue = blueHexadecimalValue.padStart(2, '0')
+                    currentColor = "#"+redHexadecimalValue+greenHexadecimalValue+blueHexadecimalValue
+                    document.getElementById("currentColorSample").style.backgroundColor = currentColor
+                    document.getElementById("currentColorValue").innerHTML = "🎨"+currentColor
+                }
+                
+                red.addEventListener("input", convertRedToHexadecimal)
+                green.addEventListener("input", convertGreenToHexadecimal)
+                blue.addEventListener("input", convertBlueToHexdecimal)
+                
+                function createSketchArea() {
+                    let table = document.createElement("table")
+                    table.setAttribute("id", "sketchArea")
+                    table.style.margin = "0 auto"
+                    table.style.border = "1px solid black"
+                    table.setAttribute("cellspacing", 0)
+                    for (let i = 0; i < 16; i++) {
+                        let row = table.insertRow(i)
+                        for (let j = 0; j < 16; j++) {
+                            let cell = row.insertCell(j)
+                            cell.innerHTML = "&nbsp"
+                            cell.className = "not-selectable"
+                            cell.style.width = "50px"
+                            cell.style.height = "50px"
+                            cell.style.border = "0px"
+                            cell.style.padding = "0px"
+                            cell.style.margin = "0px"
+                            cell.addEventListener("pointerdown",
+                                function() {
+                                    event.preventDefault()
+                                    mouseIsClicked = true
+                                    cell.style.backgroundColor = currentColor
+                                }
+                            )
+                            cell.addEventListener("pointerup",
+                                function() {
+                                    event.preventDefault()
+                                    mouseIsClicked = false
+                                }
+                            )
+                            cell.addEventListener("pointerover", 
+                                function() {
+                                    if (mouseIsClicked) {
                                         event.preventDefault()
-                                        mouseIsClicked = true
                                         cell.style.backgroundColor = currentColor
                                     }
-                                )
-                                cell.addEventListener("pointerup",
-                                    function() {
-                                        event.preventDefault()
-                                        mouseIsClicked = false
-                                    }
-                                )
-                                cell.addEventListener("pointerover", 
-                                    function() {
-                                        if (mouseIsClicked) {
-                                            event.preventDefault()
-                                            cell.style.backgroundColor = currentColor
-                                        }
-                                    }
-
-                                )
-                                cell.addEventListener("touchmove",
-                                    function() {
-                                        event.preventDefault()
-                                        cell.style.backgroundColor = currentColor
-                                    }
-                                )
-                                //cell.addEventListener("click",
-                                    //function() {
-                                        //cell.style.backgroundColor = currentColor
-                                    //}
-                                
-                                //)
-                            }
+                                }
+                            )
+                            cell.addEventListener("click",
+                                function() {
+                                    cell.style.backgroundColor = currentColor
+                                }
+                            )
+                            cell.addEventListener("touchmove",
+                                function() {
+                                    event.preventDefault()
+                                    cell.style.backgroundColor = currentColor
+                                }
+                            )
+                            document.body.appendChild(table)
                         }
-                        document.body.appendChild(table)
                     }
-                </script>
-            </body>
-        </html>
+                }
+            
+            </script>
+
+        </body>
+    
+    </html>
