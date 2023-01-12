@@ -60,7 +60,7 @@
             
             January 11th, 2023
             <br>
-            Version 10
+            Version 11
             <br>
             🎯 Fix issue where touchmove event is prevented by some unkown browser process    
             <br>
@@ -210,14 +210,14 @@
                             )
                             cell.addEventListener("pointerover", 
                                 function(e) {
-                                    document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
-                                        document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
+                                    //document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
+                                      //  document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
                                     if (mouseIsClicked) {
                             
                                         event.preventDefault()
                                         cell.style.backgroundColor = currentColor
-                                        //document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
-                                        //document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
+                                        document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
+                                        document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
                                     }
                                 }
                             )
@@ -226,18 +226,21 @@
                                     //cell.style.backgroundColor = currentColor
                                 //}
                             //)
-                            //cell.addEventListener("touchmove",
-                              //  function(e) {
+                            cell.addEventListener("touchmove",
+                                function(e) {
+                                   if (mouseIsClicked) { 
+                                    event.preventDefault()
                                     
-                                //    event.preventDefault()
+                                 
+                                    cell.style.backgroundColor = currentColor
                                     
-                                  //  if (cell.style.backgroundColor !== currentColor) { 
-                                    //cell.style.backgroundColor = currentColor
-                                    //}
-                                   // document.getElementById("debugDisplay").innerHTML = "X: " + e.touches[0].clientX + "Y: " + e.touches[0].clientY
-                                    //document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type + "e.touches.identifier" + e.touches.identifier 
-                               // }
-                            //)
+                                   document.getElementById("debugDisplay").innerHTML = "X: " + e.touches[0].clientX + "Y: " + e.touches[0].clientY
+                                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type + "e.touches.identifier" + e.touches.identifier 
+                                   }
+
+                                }
+
+                            )
 
 
                            // function handleTouchMove(e) {
