@@ -60,7 +60,7 @@
             
             January 11th, 2023
             <br>
-            Version 9
+            Version 10
             <br>
             🎯 Fix issue where touchmove event is prevented by some unkown browser process    
             <br>
@@ -210,12 +210,14 @@
                             )
                             cell.addEventListener("pointerover", 
                                 function(e) {
+                                    document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
+                                        document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
                                     if (mouseIsClicked) {
                             
                                         event.preventDefault()
                                         cell.style.backgroundColor = currentColor
-                                        document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
-                                        document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
+                                        //document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
+                                        //document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
                                     }
                                 }
                             )
