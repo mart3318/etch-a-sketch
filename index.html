@@ -60,7 +60,7 @@
             
             January 11th, 2023
             <br>
-            Version 12
+            Version 13
             <br>
             🎯 Fix issue where touchmove event is prevented by some unkown browser process    
             <br>
@@ -236,7 +236,7 @@
                                     cell.style.backgroundColor = currentColor
                                     
                                    document.getElementById("debugDisplay").innerHTML = "X: " + e.touches[0].clientX + "Y: " + e.touches[0].clientY
-                                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type + "touchTracker" + touchTracker 
+                                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type + "JSON.stringify(touchTracker) " + JSON.stringify(touchTracker) 
                                    
 
                                 }
