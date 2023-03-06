@@ -1,7 +1,7 @@
 let redDecimalValue = parseInt(document.getElementById("red").value, 10)
 let greenDecimalValue = parseInt(document.getElementById("green").value, 10)
 let blueDecimalValue = parseInt(document.getElementById("blue").value, 10)
-                
+
 let redHexadecimalValue = "00"
 let greenHexadecimalValue = "00"
 let blueHexadecimalValue = "00"
@@ -16,20 +16,7 @@ convertGreenToHexadecimal()
 convertBlueToHexdecimal()
                 
 document.getElementById("currentColorValue").innerHTML = currentColorValue
-                
-function debug() {
-    console.log("👇 Debug Start 👇")
-    console.log("redDecimalValue: "+redDecimalValue)
-    console.log("greenDecimalValue: "+greenDecimalValue)
-    console.log("blueDecimalValue: "+blueDecimalValue)
-    console.log("redHexadecimalValue: "+redHexadecimalValue)
-    console.log("greenHexadecimalValue: "+greenHexadecimalValue)
-    console.log("blueHexaDecimalValue: "+blueHexadecimalValue)
-    console.log("currentColor: "+currentColor)
-    console.log("currentColorValue: "+currentColorValue)
-    console.log("mouseIsClicked: "+mouseIsClicked)
-}
-                
+                                
 function convertRedToHexadecimal() {
     redHexadecimalValue = parseInt(document.getElementById("red").value, 10)
     redHexadecimalValue = redHexadecimalValue.toString(16)
@@ -83,16 +70,12 @@ function createSketchArea() {
                     e.preventDefault()
                     mouseIsClicked = true
                     cell.style.backgroundColor = currentColor
-                    document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
-                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
                 }
             )
             cell.addEventListener("pointerup",
                 function(e) {
                     e.preventDefault()
                     mouseIsClicked = false
-                    document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
-                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
                 }
             )
             cell.addEventListener("pointerover", 
@@ -100,8 +83,6 @@ function createSketchArea() {
                     if (mouseIsClicked) {
                         e.preventDefault()
                         cell.style.backgroundColor = currentColor
-                        document.getElementById("debugDisplay").innerHTML = "X: " + e.clientX + "Y: " + e.clientY
-                        document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type;
                     }
                 }
             )
@@ -112,8 +93,6 @@ function createSketchArea() {
                     if(target.tagName === "TD"){
                         target.style.backgroundColor = currentColor;
                     }
-                    document.getElementById("debugDisplay").innerHTML = "X: " + e.touches[0].clientX + "Y: " + e.touches[0].clientY
-                    document.getElementById("debugDisplay2").innerHTML = "e.type:" + e.type
                 }
             )
                     document.body.appendChild(table)
