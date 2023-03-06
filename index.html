@@ -1,57 +1,11 @@
 <!DOCTYPE html>
-
 <html>
-    
-    <head>
-        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <title>Etch-A-Sketch</title>
-        
-        <style>
-            
-            table {
-                border : 0px solid
-            }
-            
-            table.center {
-                margin-left:auto; 
-                margin-right:auto
-            }
-            
-            div {
-                margin: 50px;
-            }
-            
-            #currentColorSample {
-                width : 50px;
-                height : 50px;
-                margin-left:auto;
-                margin-right:auto
-            }
-            
-            #currentColorValue {
-                font-size: 50px;
-                text-align: center
-            }
-            
-            #debug {
-                width: 50px;
-                height: 50px
-            }
-            
-            .not-selectable {
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none
-            }
-        
-        </style>
-    
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Etch-A-Sketch</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+
     </head>
     
     <body onload="createSketchArea()">
@@ -60,10 +14,10 @@
             
             January 11th, 2023
             <br>
-            Version 16
+            Version 17
 
             <br>
-            🎯 Fix issue where touchmove event is prevented by some unkown browser process    
+            First build where touch works for paint!
             <br>
             <button id="debug" onclick="debug()">🔎🪲</button>
 
